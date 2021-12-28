@@ -1,24 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 function App() {
+  const [result, setResult] = React.useState("");
+
+  function handleClick(event) {
+    let number = event.target.name;
+
+    if (number === "Clear") {
+      setResult("");
+    } else {
+      setResult(result.concat(number));
+    }
+  }
+
+  function handleCalc() {
+    const conta = eval(result);
+    setResult(conta);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <div className="screen">
+          <span>{result}</span>
+        </div>
+        <div className="buttons">
+          <button name="1" onClick={handleClick}>
+            1
+          </button>
+          <button name="2" onClick={handleClick}>
+            2
+          </button>
+          <button name="3" onClick={handleClick}>
+            3
+          </button>
+          <button name="4" onClick={handleClick}>
+            4
+          </button>
+          <button name="5" onClick={handleClick}>
+            5
+          </button>
+          <button name="6" onClick={handleClick}>
+            6
+          </button>
+          <button name="7" onClick={handleClick}>
+            7
+          </button>
+          <button name="8" onClick={handleClick}>
+            8
+          </button>
+          <button name="9" onClick={handleClick}>
+            9
+          </button>
+          <button name="0" onClick={handleClick}>
+            0
+          </button>
+          <button name="-" onClick={handleClick}>
+            -
+          </button>
+          <button name="+" onClick={handleClick}>
+            +
+          </button>
+          <button name="/" onClick={handleClick}>
+            /
+          </button>
+          <button name="*" onClick={handleClick}>
+            *
+          </button>
+          <button name="Clear" onClick={handleClick}>
+            Clear
+          </button>
+          <button name="=" onClick={handleCalc}>
+            =
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
 
